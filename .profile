@@ -2,7 +2,7 @@
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH";
 fi
-if type xset > /dev/null; then
+if type xset &> /dev/null; then
     xset m 0 0
 fi
 #set background
