@@ -51,7 +51,15 @@ alias run=". ./run"
 alias open='xdg-open'
 alias tarc='tar -czvf'
 alias resource='source ~/.bashrc'
-alias chcur='stat -c "%a %n"';
+alias chcur='stat -c "%a %n"'
+
+alias volup='pactl set-sink-volume 1 +25%'
+alias voldown='pactl set-sink-volume 1 -25%'
+alias setvol='pactl set-sink-volume 1'
+alias vol-up='volup'
+alias vol-down='voldown'
+alias set-vol='setvol'
+alias volume='setvol'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
