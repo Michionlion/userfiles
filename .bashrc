@@ -47,7 +47,7 @@ alias cb='cd ..'
 alias cd..='cd ..'
 alias jjar='java -jar'
 alias build=". ./build"
-#alias run=". ./run"
+alias run=". ./run"
 alias open='xdg-open'
 alias tarc='tar -czvf'
 alias resource='source ~/.bashrc'
@@ -62,7 +62,7 @@ function trash() {
 		if [[ "$var" != -* ]]; then
 			if [[ "$var" != *tmp* ]]; then
 				echo Moving "$var" to the trash!;
-				mv "$var" ~/.trash;
+				mv "$var" ~/.trash/;
 			else
 				\rm "$var"
 			fi
@@ -72,7 +72,7 @@ function trash() {
 
 function clear-trash() {
 	for ff in ~/.trash/*; do
-		\rm "$ff" -rf
+		\rm -rf "$ff"
 	done
 }
 
