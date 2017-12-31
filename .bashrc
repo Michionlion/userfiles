@@ -60,6 +60,8 @@ alias vol-up='volup'
 alias vol-down='voldown'
 alias set-vol='setvol'
 alias volume='setvol'
+alias volset='setvol'
+alias vol-set='setvol'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
