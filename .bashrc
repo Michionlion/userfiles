@@ -62,6 +62,8 @@ alias set-vol='setvol'
 alias volume='setvol'
 alias volset='setvol'
 alias vol-set='setvol'
+alias gradlew='./gradlew'
+alias hardrm='\rm -rf'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
