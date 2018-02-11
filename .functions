@@ -1,41 +1,55 @@
 function trash() {
-	for var in "$@"; do
-		if [[ "$var" != -* ]]; then
-			if [[ "$var" != *tmp* ]]; then
-				echo Moving "$var" to the trash!;
-				mv "$var" ~/.trash/;
-			else
-				\rm "$var"
-			fi
-		fi
-	done
+    for var in "$@"; do
+        if [[ "$var" != -* ]]; then
+            if [[ "$var" != *tmp* ]]; then
+                echo Moving "$var" to the trash!;
+                mv "$var" ~/.trash/;
+            else
+                \rm "$var"
+            fi
+        fi
+    done
 }
 
 function clear-trash() {
-	\rm -rf ~/.trash;
-	mkdir ~/.trash;
+    \rm -rf ~/.trash;
+    mkdir ~/.trash;
+}
+
+function build() {
+    names=$(command ls build*)
+    for script in "$names"; do
+        ./$script $@
+    done
+}
+
+function run() {
+    names=$(command ls run*)
+    for script in "$names"; do
+        ./$script $@
+    done
 }
 
 function mkalias () {
-	alias "$*";
-	echo alias "$*" >> .aliases
-	echo "Made alias $ for *";
+    alias "$*";
+    echo alias "$*" >> ~/.userfiles/.aliases
+    echo "Made alias $ for *";
 }
 function cnl() { \cd "$@" && \ls --color=auto; }
 alias cd='cnl'
 
 function resetwifi() {
-	sudo modprobe -r ath9k;
-	echo Disabled WIFI;
-	sudo modprobe ath9k;
-	echo Enabled WIFI;
+    sudo modprobe -r ath9k;
+    echo Disabled WIFI;
+    sudo modprobe ath9k;
+    echo Enabled WIFI;
 }
 
 function lint() {
-	if [ "$#" -gt 0 ]; then
-		for path in "$@"; do
-			filename=$(basename "$1")
-			ext=$([[ "$filename" = *.* ]] && echo ".${filename##*.}" || echo '')
+    if [ "$#" -gt 0 ]; then
+        for path in "$@"; do
+            filename=$(basename "$1")
+            ext=$([[ "$filename" = *.* ]] && echo ".${filename##*.}" || echo '')
 			case "$path" in
 			*.py)
 				echo "Using autopep8 for $path"
