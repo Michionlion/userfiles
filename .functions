@@ -70,7 +70,7 @@ function lint() {
 alias acp='update';
 alias gcp='update';
 function update() {
-	if [[ "$1" =~ force|--force|-f|-q|--quiet|quiet ]]; then
+	if [[ $1 =~ force|--force|-f|-q|--quiet|quiet ]]; then
 		git add -A;
 		git status;
 		if [[ -z "$2" ]]; then
