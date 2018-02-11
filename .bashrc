@@ -1,20 +1,16 @@
+#!/bin/bash
 # get custom bashrc location
 pushd . > /dev/null
 SCRIPT_PATH="${BASH_SOURCE[0]}"
 if ([ -h "${SCRIPT_PATH}" ]); then
   while([ -h "${SCRIPT_PATH}" ]); do
-    cd `dirname "$SCRIPT_PATH"`;
-    SCRIPT_PATH=`readlink "${SCRIPT_PATH}"`;
+    command cd "$(dirname "$SCRIPT_PATH")";
+    SCRIPT_PATH=$(readlink "${SCRIPT_PATH}");
   done
 fi
-cd `dirname ${SCRIPT_PATH}` > /dev/null
-SCRIPT_PATH=`pwd`;
+command cd "$(dirname "${SCRIPT_PATH}")" > /dev/null
+SCRIPT_PATH=$(pwd)
 popd  > /dev/null
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
 
 HISTCONTROL=ignoreboth
 shopt -s histappend
@@ -57,6 +53,7 @@ xterm*|rxvt*)
 esac
 
 if [ -x /usr/bin/dircolors ]; then
+    # shellcheck disable=SC2015
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
@@ -76,9 +73,11 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 
 # source aliases file in userfiles
+# shellcheck source=/dev/null
 . "$SCRIPT_PATH/.aliases"
 
 # source environment variables file in userfiles
+# shellcheck source=/dev/null
 . "$SCRIPT_PATH/.env_vars"
 
 
@@ -90,11 +89,13 @@ set -o physical
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        # shellcheck source=/dev/null
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        # shellcheck source=/dev/null
+        . /etc/bash_completion
+    fi
 fi
 
 # stop mouse accel
@@ -103,7 +104,5 @@ if type xset &> /dev/null; then
 fi
 
 # source functions file in userfiles
+# shellcheck source=/dev/null
 . "$SCRIPT_PATH/.functions"
-
-# misc stuff
-alias ensure='~/bin/ensure $PWD';

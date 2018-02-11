@@ -1,3 +1,4 @@
+#!/bin/bash
 function trash() {
     for var in "$@"; do
         if [[ "$var" != -* ]]; then
@@ -5,28 +6,28 @@ function trash() {
                 echo Moving "$var" to the trash!;
                 mv "$var" ~/.trash/;
             else
-                \rm "$var"
+                command rm "$var"
             fi
         fi
     done
 }
 
 function clear-trash() {
-    \rm -rf ~/.trash;
+    command rm -rf ~/.trash;
     mkdir ~/.trash;
 }
 
 function build() {
     names=$(command ls build*)
-    for script in "$names"; do
-        ./$script $@
+    for script in $names; do
+        ./"$script" "$@"
     done
 }
 
 function run() {
     names=$(command ls run*)
-    for script in "$names"; do
-        ./$script $@
+    for script in $names; do
+        ./"$script" "$@"
     done
 }
 
@@ -35,7 +36,7 @@ function mkalias () {
     echo alias "$*" >> ~/.userfiles/.aliases
     echo "Made alias $ for *";
 }
-function cnl() { \cd "$@" && \ls --color=auto; }
+function cnl() { command cd "$@" && command ls --color=auto; }
 alias cd='cnl'
 
 function resetwifi() {
@@ -69,7 +70,7 @@ function lint() {
 alias acp='update';
 alias gcp='update';
 function update() {
-	if [ "$1" == "force" ]; then
+	if [[ "$1" =~ force|--force|-f|-q|--quiet|quiet ]]; then
 		git add -A;
 		git status;
 		if [[ -z "$2" ]]; then
@@ -82,17 +83,17 @@ function update() {
 	fi
 
 	git status;
-	read -p 'Add? (y/n): ' ans;
-	if [ "$ans" == "y" -o -z "${ans// }" ]; then
+	read -r -p 'Add? (y/n): ' ans;
+	if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
 		git add -A;
 		git status;
 	fi
-	read -p 'Commit? (y/n) ' ans;
-	if [ "$ans" == "y" -o -z "${ans// }" ]; then
+	read -r -p 'Commit? (y/n) ' ans;
+	if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
 		if [ "$#" -gt 0 ]; then
 			git commit -m "$1";
 		else
-			read -p 'Message: ' ans
+			read -r -p 'Message: ' ans
 			if [[ -z "${ans// }" ]]; then
 				git commit -m "updates";
 			else
@@ -101,8 +102,8 @@ function update() {
 		fi
 	fi
 
-	read -p 'Push? (y/n) ' ans;
-	if [ "$ans" == "y" -o -z "${ans// }" ]; then
+	read -r -p 'Push? (y/n) ' ans;
+	if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
 		git push;
 	fi
 }
@@ -119,7 +120,7 @@ function gvc() {
 }
 
 char() {
-	printf \\$(printf '%03o' $1);
+	printf '%03o' "$1";
 	echo;
 }
 
@@ -131,7 +132,7 @@ alias asci='ascii';
 
 odt-to-pdf() {
 	newname="$(basename "$1" .odt).pdf";
-	pandoc "$1" -f odt -t latex -s -o  "newname";
-	evince "newname";
+	pandoc "$1" -f odt -t latex -s -o  "$newname";
+	evince "$newname";
 	mv "$1" ".$1";
 }
