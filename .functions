@@ -67,6 +67,16 @@ function lint() {
 }
 
 
+
+function git() {
+	if [ "$1" = "commit" ]; then
+		shift;
+		command git commit -S "$@"
+	else
+		command git "$@"
+	fi
+}
+
 alias acp='update';
 alias gcp='update';
 function update() {
