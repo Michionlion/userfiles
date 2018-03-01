@@ -70,10 +70,10 @@ function lint() {
 
 function git() {
 	if [ "$1" = "commit" ]; then
-		shift;
+		shift
 		if [ "$1" = "-ns" ]; then
 			shift
-			command git $@
+			command git commit "$@"
 		else
 			command git commit -S "$@"
 		fi
