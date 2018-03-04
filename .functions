@@ -82,6 +82,7 @@ function update() {
 		return;
 	elif [[ $1 =~ q|-q|--quiet|quiet ]]; then
         git add -A;
+        git status;
         if [[ -z "$2" ]]; then
             read -r -p 'Message: ' ans
             if [[ -z "${ans// }" ]]; then
