@@ -41,6 +41,7 @@ ignore-phase2-ca-cert=false
 ignore-ca-cert=true
 
 [org/gnome/settings-daemon/plugins/power]
+idle-dim=false
 sleep-inactive-battery-type='suspend'
 sleep-inactive-ac-timeout=7200
 sleep-inactive-ac-type='suspend'
@@ -69,12 +70,14 @@ first-run=false
 check-timestamp=int64 1520447417
 
 [org/gnome/desktop/interface]
-icon-theme='Faba'
 clock-format='12h'
-gtk-im-module='gtk-im-context-simple'
 cursor-theme='DMZ-White'
-gtk-theme='Arc-Darker'
 toolkit-accessibility=false
+gtk-im-module='gtk-im-context-simple'
+clock-show-seconds=true
+icon-theme='Faba'
+gtk-theme='Arc-Darker'
+clock-show-date=false
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'Sundry', 'YaST']
@@ -102,6 +105,12 @@ lock-enabled=false
 
 [org/gnome/desktop/peripherals/touchscreens/03eb:8b03]
 display=['BOE', '0x05df', '0x00000000']
+
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+[org/gnome/desktop/session]
+idle-delay=uint32 900
 
 [org/gnome/desktop/privacy]
 recent-files-max-age=30
@@ -137,11 +146,13 @@ custom-colors=[(0.0, 0.66666666666666663, 0.0, 1.0)]
 
 [apps/update-manager]
 first-run=false
-launch-time=int64 1520450288
+launch-time=int64 1520460875
 
 [com/gexperts/Tilix]
 focus-follow-mouse=true
+unsafe-paste-alert=false
 new-window-inherit-state=true
+terminal-title-style='normal'
 window-style='borderless'
 
 [com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
@@ -157,12 +168,12 @@ highlight-colors-set=false
 use-system-font=false
 bold-color-set=false
 font='Ubuntu Mono 12'
-terminal-bell='icon'
+terminal-bell='none'
 use-theme-colors=false
 cursor-blink-mode='system'
 background-color='#272822'
-background-transparency-percent=7
-dim-transparency-percent=6
+background-transparency-percent=10
+dim-transparency-percent=7
 custom-hyperlinks=['.*\\.html,google-chrome-stable,true', 'http://.*,google-chrome-stable,false', 'https://.*,google-chrome-stable,false', 'file://.*,xdg-open,false']
 
 [com/solus-project/budgie-panel]
