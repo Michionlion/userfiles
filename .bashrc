@@ -106,3 +106,8 @@ fi
 # source functions file in userfiles
 # shellcheck source=/dev/null
 . "$SCRIPT_PATH/.functions"
+
+
+# set git-signing to be on at the start always
+git-signing-on
+
