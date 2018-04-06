@@ -18,14 +18,14 @@ function clear-trash() {
 }
 
 function build() {
-    names=$(command ls build*)
+    names=$(command ls build*.*sh)
     for script in $names; do
         ./"$script" "$@"
     done
 }
 
 function run() {
-    names=$(command ls run*)
+    names=$(command ls run*.*sh)
     for script in $names; do
         ./"$script" "$@"
     done
