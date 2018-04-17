@@ -70,12 +70,18 @@ function lint() {
 
 function git-signing-on() {
     export GIT_SIGN="ON"
-    git-signing
+    
+    if [[ ! "$1" -eq "-q" ]]; then
+        git-signing
+    fi
 }
 
 function git-signing-off() {
     export GIT_SIGN="OFF"
-    git-signing
+
+    if [[ ! "$1" -eq "-q" ]]; then
+        git-signing
+    fi
 }
 
 function git-signing() {
