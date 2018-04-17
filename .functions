@@ -18,7 +18,7 @@ function clear-trash() {
 }
 
 function build() {
-    names=$(command ls build*)
+    names=$(command ls build*.*sh)
     for script in $names; do
         if [[ "$script" == build* && ! "$script" == *.gradle && -f "$script" ]]; then
             ./"$script" "$@"
@@ -27,7 +27,7 @@ function build() {
 }
 
 function run() {
-    names=$(command ls run*)
+    names=$(command ls run*.*sh)
     for script in $names; do
         ./"$script" "$@"
     done
