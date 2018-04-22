@@ -1,5 +1,6 @@
 #!/bin/bash
 
+alias bfg='java --jar ~/.userfiles/bfg.jar'
 alias gpl='git pull'
 alias gpu='git push'
 alias gaa='git add -A'
