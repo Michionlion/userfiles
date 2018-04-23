@@ -18,7 +18,7 @@ function clear-trash() {
 }
 
 function build() {
-    names=$(command ls build*)
+    names=$(command ls build*.*sh)
     for script in $names; do
         if [[ "$script" == build* && ! "$script" == *.gradle && -f "$script" ]]; then
             ./"$script" "$@"
@@ -27,7 +27,7 @@ function build() {
 }
 
 function run() {
-    names=$(command ls run*)
+    names=$(command ls run*.*sh)
     for script in $names; do
         ./"$script" "$@"
     done
@@ -70,12 +70,18 @@ function lint() {
 
 function git-signing-on() {
     export GIT_SIGN="ON"
-    git-signing
+    
+    if [[ ! "$1" -eq "-q" ]]; then
+        git-signing
+    fi
 }
 
 function git-signing-off() {
     export GIT_SIGN="OFF"
-    git-signing
+
+    if [[ ! "$1" -eq "-q" ]]; then
+        git-signing
+    fi
 }
 
 function git-signing() {
