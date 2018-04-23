@@ -109,5 +109,5 @@ fi
 
 
 # set git-signing to be on at the start always
-git-signing-on
+git-signing-on -q
 
