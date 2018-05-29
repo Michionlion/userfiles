@@ -80,6 +80,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # shellcheck source=/dev/null
 . "$SCRIPT_PATH/.env_vars"
 
+# add bin to path
+export PATH="$PATH:$SCRIPT_PATH/bin"
+
 
 # chase symlinks
 set -o physical
