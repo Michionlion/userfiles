@@ -12,6 +12,7 @@ alias cd..='cd ..'
 alias jjar='java -jar'
 #alias build=". ./build"
 #alias run=". ./run"
+alias a='atom .'
 alias open='xdg-open'
 alias tarc='tar -czvf'
 alias resource='source ~/.bashrc'
