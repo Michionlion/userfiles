@@ -1,6 +1,7 @@
 #!/bin/bash
 
 alias bfg='java --jar ~/.userfiles/bfg.jar'
+alias g='git'
 alias gpl='git pull'
 alias gpu='git push'
 alias gaa='git add -A'
@@ -28,5 +29,7 @@ alias vol-set='setvol'
 alias gradlew='./gradlew'
 alias gradleci='gradle build --continuous'
 alias hardrm='\rm -rf'
+
+alias cr='crystal'
 
 alias leak-test='valgrind --leak-check=full --show-leak-kinds=all'
