@@ -164,13 +164,13 @@ function update() {
 }
 
 function gvc() {
-	OVN=$(cat version);
-	let "OVN++";
-	echo $OVN > version;
-	echo Committing with version $OVN...;
-	git add version;
+	# this doesn't work
+	OVN=$(echo "$(cat version) + 1" | bc);
+	echo "$OVN" > version;
+	echo "Committing with version $OVN...";
+	command git add version;
 	desc="Commit with v$OVN, message: $1";
-	git commit -m "$desc";
+	command git commit -m "$desc";
 	echo ---- v$OVN commit finished! ----;
 }
 

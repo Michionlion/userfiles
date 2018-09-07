@@ -1,16 +1,5 @@
 #!/bin/bash
-# get custom bashrc location
-pushd . > /dev/null
-SCRIPT_PATH="${BASH_SOURCE[0]}"
-if ([ -h "${SCRIPT_PATH}" ]); then
-  while([ -h "${SCRIPT_PATH}" ]); do
-    command cd "$(dirname "$SCRIPT_PATH")";
-    SCRIPT_PATH=$(readlink "${SCRIPT_PATH}");
-  done
-fi
-command cd "$(dirname "${SCRIPT_PATH}")" > /dev/null
-SCRIPT_PATH=$(pwd)
-popd  > /dev/null
+SCRIPT_PATH="$HOME/.userfiles"
 
 HISTCONTROL=ignoreboth
 shopt -s histappend
@@ -71,22 +60,19 @@ alias egrep='egrep --color=auto'
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-
 # source aliases file in userfiles
 # shellcheck source=/dev/null
-. "$SCRIPT_PATH/.aliases"
+source "$SCRIPT_PATH/aliases"
 
 # source environment variables file in userfiles
 # shellcheck source=/dev/null
-. "$SCRIPT_PATH/.env_vars"
+source "$SCRIPT_PATH/env_vars"
 
 # add bin to path
 export PATH="$PATH:$SCRIPT_PATH/bin"
 
-
 # chase symlinks
 set -o physical
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -108,9 +94,12 @@ fi
 
 # source functions file in userfiles
 # shellcheck source=/dev/null
-. "$SCRIPT_PATH/.functions"
+source "$SCRIPT_PATH/functions"
 
 
 # set git-signing to be on at the start always
 git-signing-on -q
 
+# addon sourcing
+export ENHANCD_HOOK_AFTER_CD="ls"
+source "$SCRIPT_PATH/addons/enhancd/init.sh"
