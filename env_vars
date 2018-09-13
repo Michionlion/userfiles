@@ -1,5 +1,0 @@
-#!/bin/bash
-
-export PATH="$PATH:$HOME/.userfiles/bin"
-
-export ENV_VARS_LOADED=TRUE;

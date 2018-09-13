@@ -66,7 +66,7 @@ source "$SCRIPT_PATH/aliases"
 
 # source environment variables file in userfiles
 # shellcheck source=/dev/null
-source "$SCRIPT_PATH/env_vars"
+# source "$SCRIPT_PATH/env_vars"
 
 # add bin to path
 export PATH="$PATH:$SCRIPT_PATH/bin"
@@ -102,4 +102,5 @@ git-signing-on -q
 
 # addon sourcing
 export ENHANCD_HOOK_AFTER_CD="ls"
+# shellcheck source=/dev/null
 source "$SCRIPT_PATH/addons/enhancd/init.sh"

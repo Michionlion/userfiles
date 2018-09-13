@@ -15,6 +15,7 @@ alias jjar='java -jar'
 alias a='atom .'
 alias open='xdg-open'
 alias tarc='tar -czvf'
+alias tarx='tar -xzvf'
 alias resource='source ~/.bashrc'
 alias chcur='stat -c "%a %n"'
 
@@ -29,7 +30,7 @@ alias volset='setvol'
 alias vol-set='setvol'
 alias gradlew='./gradlew'
 alias gradleci='gradle build --continuous'
-alias hardrm='\rm -rf'
+alias hrm='\rm -rf'
 
 alias cr='crystal'
 
