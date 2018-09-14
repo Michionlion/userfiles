@@ -1,0 +1,24 @@
+{
+  "segments": [
+    "virtual_env",
+    "time",
+    "ssh",
+    "cwd",
+    "git_stash",
+    "git",
+    "jobs",
+    "set_term_title",
+    "svn",
+    "newline",
+    "root"
+  ],
+  "mode": "patched",
+  "time": {
+    "format": "%H:%M"
+  },
+  "cwd": {
+    "max_dir_size": 8,
+    "full_cwd": true
+  },
+  "theme": "gruvbox"
+}
