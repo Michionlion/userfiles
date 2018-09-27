@@ -1,0 +1,9 @@
+#!/bin/bash
+
+function _update_ps1() {
+  PS1="$($HOME/go/bin/powerline-go -error $? -shell bash -modules venv,time,ssh,cwd,perms,git,hg,jobs,exit -newline)"
+}
+
+if [ "$TERM" != "linux" ]; then
+  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
