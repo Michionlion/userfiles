@@ -17,7 +17,10 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-
+# default to go if $POWERLINE_VERSION is unset or empty
+if [ -z "$POWERLINE_VERSION" ]; then
+    export POWERLINE_VERSION="go"
+fi
 source $SCRIPT_PATH/powerline
 
 if [ -x /usr/bin/dircolors ]; then

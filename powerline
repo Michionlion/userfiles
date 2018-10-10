@@ -2,17 +2,32 @@
 
 export POWERLINE_PIP_HOME="$HOME/.local/lib/python3.6/site-packages/powerline"
 
-if [ -f $(which powerline-daemon) ]; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-  . $POWERLINE_PIP_HOME/bindings/bash/powerline.sh 
+if [ "$POWERLINE_VERSION" = "python" ]; then
+  if [ -f $(which powerline-daemon) ]; then
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    . $POWERLINE_PIP_HOME/bindings/bash/powerline.sh
+  else
+    echo "POWERLINE NOT INSTALLED"
+  fi
+elif [ "$POWERLINE_VERSION" = "haskell" ]; then
+  if [ -f $(which powerline-hs) ]; then
+    POWERLINE_COMMAND=powerline-hs
+    POWERLINE_CONFIG_COMMAND=/bin/true
+    . $POWERLINE_PIP_HOME/bindings/bash/powerline.sh
+  else
+    echo "POWERLINE-HS NOT INSTALLED"
 fi
+elif [ "$POWERLINE_VERSION" = "go" ]; then
 
-# function _update_ps1() {
-#   PS1="$($HOME/go/bin/powerline-go -error $? -shell bash -modules venv,time,ssh,cwd,perms,git,hg,jobs,exit -newline)"
-# }
+  if [ -f $(which powerline-go) ]; then
+    function _update_ps1() {
+      PS1="$(powerline-go -error $? -shell bash -modules venv,time,ssh,cwd,perms,git,hg,jobs,exit -newline)"
+    }
 
-# if [ "$TERM" != "linux" ]; then
-#   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-# fi
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+  else
+    echo "POWERLINE-GO NOT INSTALLED"
+  fi
+fi
