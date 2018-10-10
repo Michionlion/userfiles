@@ -1,9 +1,18 @@
 #!/bin/bash
 
-function _update_ps1() {
-  PS1="$($HOME/go/bin/powerline-go -error $? -shell bash -modules venv,time,ssh,cwd,perms,git,hg,jobs,exit -newline)"
-}
+export POWERLINE_PIP_HOME="$HOME/.local/lib/python3.6/site-packages/powerline"
 
-if [ "$TERM" != "linux" ]; then
-  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+if [ -f $(which powerline-daemon) ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . $POWERLINE_PIP_HOME/bindings/bash/powerline.sh 
 fi
+
+# function _update_ps1() {
+#   PS1="$($HOME/go/bin/powerline-go -error $? -shell bash -modules venv,time,ssh,cwd,perms,git,hg,jobs,exit -newline)"
+# }
+
+# if [ "$TERM" != "linux" ]; then
+#   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
