@@ -84,5 +84,6 @@ git-signing-on -q
 
 # addon sourcing
 export ENHANCD_HOOK_AFTER_CD="ls"
+export ENHANCD_DISABLE_DOT=1
 # shellcheck source=/dev/null
 source "$SCRIPT_PATH/addons/enhancd/init.sh"
