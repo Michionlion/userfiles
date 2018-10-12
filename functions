@@ -18,19 +18,27 @@ function clear-trash() {
 }
 
 function build() {
-    names=$(command ls build*.*sh)
-    for script in $names; do
-        if [[ "$script" == build* && ! "$script" == *.gradle && -f "$script" ]]; then
-            ./"$script" "$@"
-        fi
-    done
+    if [ -f "$PWD/build.gradle" ]; then
+        gradle build "$@"
+    else
+        names=$(command ls build*.*sh)
+        for script in $names; do
+            if [[ "$script" == build* && ! "$script" == *.gradle && -f "$script" ]]; then
+                ./"$script" "$@"
+            fi
+        done
+    fi
 }
 
 function run() {
-    names=$(command ls run*.*sh)
-    for script in $names; do
-        ./"$script" "$@"
-    done
+    if [ -f "$PWD/build.gradle" ]; then
+        gradle run --console=plain "$@"
+    else
+        names=$(command ls run*.*sh)
+        for script in $names; do
+            ./"$script" "$@"
+        done
+    fi
 }
 
 function mkalias () {
@@ -70,7 +78,7 @@ function lint() {
 
 function git-signing-on() {
     export GIT_SIGN="ON"
-    
+
     if [[ ! "$1" -eq "-q" ]]; then
         git-signing
     fi
