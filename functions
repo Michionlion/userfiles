@@ -18,26 +18,30 @@ function clear-trash() {
 }
 
 function build() {
-    if [ -f "$PWD/build.gradle" ]; then
+    names=$(command ls build*.*sh)
+    ranscript=0
+    for script in $names; do
+        if [[ "$script" == build* && ! "$script" == *.gradle && -f "$script" ]]; then
+            ./"$script" "$@"
+            ranscript=1
+        fi
+    done
+
+    if [ "$ranscript" = "0" ]; then
         gradle build "$@"
-    else
-        names=$(command ls build*.*sh)
-        for script in $names; do
-            if [[ "$script" == build* && ! "$script" == *.gradle && -f "$script" ]]; then
-                ./"$script" "$@"
-            fi
-        done
     fi
 }
 
 function run() {
-    if [ -f "$PWD/build.gradle" ]; then
+    names=$(command ls run*.*sh)
+    ranscript=0
+    for script in $names; do
+        ./"$script" "$@"
+        ranscript=1
+    done
+
+    if [ "$ranscript" = "0" ]; then
         gradle run --console=plain "$@"
-    else
-        names=$(command ls run*.*sh)
-        for script in $names; do
-            ./"$script" "$@"
-        done
     fi
 }
 
