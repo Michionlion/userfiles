@@ -18,7 +18,7 @@ function clear-trash() {
 }
 
 function build() {
-    names=$(command ls build*.*sh)
+    names=$(command ls build*.*sh 2> /dev/null)
     ranscript=0
     for script in $names; do
         if [[ "$script" == build* && ! "$script" == *.gradle && -f "$script" ]]; then
@@ -33,7 +33,7 @@ function build() {
 }
 
 function run() {
-    names=$(command ls run*.*sh)
+    names=$(command ls run*.*sh 2> /dev/null)
     ranscript=0
     for script in $names; do
         ./"$script" "$@"
