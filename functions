@@ -1,4 +1,28 @@
 #!/bin/bash
+
+function connect() {
+    network="$1"
+    networks=$(netctl list)
+    if [[ -z "$network" ]]; then
+        echo "Available Networks:"
+        echo "$networks"
+    elif [[ ! "$networks" =~ "$network" ]]; then
+        echo "$network does not have a netctl profile!"
+    else
+        netctl start "$network"
+        export NETWORK="$network"
+        echo "Connected to $NETWORK"
+    fi
+}
+
+function disconnect() {
+    netctl stop-all
+    export NETWORK=""
+    echo "Disconnected!"
+    echo "Available Networks:"
+    echo "$(netctl list)"
+}
+
 function trash() {
     for var in "$@"; do
         if [[ "$var" != -* ]]; then
