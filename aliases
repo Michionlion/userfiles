@@ -32,6 +32,9 @@ alias gradlew='./gradlew'
 alias gradleci='gradle build --continuous'
 alias hrm='\rm -rf'
 
+alias suspend='systemctl suspend'
+alias sleep='suspend'
+
 alias cr='crystal'
 
 alias leak-test='valgrind --leak-check=full --show-leak-kinds=all'
