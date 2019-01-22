@@ -1,15 +1,39 @@
 call plug#begin('~/.config/nvim/plugged')
 " Plugins will go here
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-fugitive'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
-nnoremap <C-p> :FZF<CR>
+let mapleader=" <SPACE>"
 
-let mapleader="\<SPACE>"
+" NERDTree config
 
-" Relative numbering
+" Open with leader-t
+nnoremap <Leader>t g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTreeVCS<CR>"
+
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+" Quit NERDTree if it is the last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Open NERDTree if no command line args are given
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if (argc() == 0 && !exists("s:std_in")) | NERDTree | endif
+
+" Open NERDTree if a directory is opened
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
+
+" Relative numbering toggle function
 function! NumberToggle()
   if(&relativenumber == 1)
     set nornu
@@ -54,5 +78,38 @@ set ignorecase
 set smartcase
 set gdefault
 
+" disable beep / flash
+set vb t_vb=
 
+" enable line and column display
+set ruler
 
+" disable showmode -- using vim-airline
+set noshowmode
+
+" syntax
+syntax on
+
+" markdown
+let g:vim_markdown_folding_disabled = 1
+
+" splits shold open to the right and below
+set splitright
+set splitbelow
+
+" highlight current line
+autocmd BufEnter * setlocal cursorline
+autocmd WinEnter * setlocal cursorline
+autocmd BufLeave * setlocal nocursorline
+autocmd WinLeave * setlocal nocursorline
+
+" improved keyboard navigation
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+" vim-airline config
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
+let g:airline_solarized_bg='dark'
