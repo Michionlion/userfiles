@@ -11,7 +11,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
-let mapleader=" <SPACE>"
+let mapleader="\<SPACE>"
 
 " NERDTree config
 
