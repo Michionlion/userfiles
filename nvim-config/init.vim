@@ -16,7 +16,7 @@ let mapleader="\<SPACE>"
 " NERDTree config
 
 " Open with leader-t
-nnoremap <Leader>t g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTreeVCS<CR>"
+nnoremap <silent> <Leader>t :NERDTreeToggle<CR>
 
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
