@@ -9,6 +9,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'Yggdroot/indentLine'
+Plug 'justinmk/vim-syntax-extra'
 call plug#end()
 
 let mapleader="\<SPACE>"
@@ -98,10 +99,10 @@ set splitright
 set splitbelow
 
 " highlight current line
-autocmd BufEnter * setlocal cursorline
-autocmd WinEnter * setlocal cursorline
-autocmd BufLeave * setlocal nocursorline
-autocmd WinLeave * setlocal nocursorline
+"autocmd BufEnter * setlocal cursorline
+"autocmd WinEnter * setlocal cursorline
+"autocmd BufLeave * setlocal nocursorline
+"autocmd WinLeave * setlocal nocursorline
 
 " improved keyboard navigation
 nnoremap <leader>h <C-w>h
