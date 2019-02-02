@@ -190,7 +190,7 @@ bar {
 
 # start compositing engine
 # and other programs
-
 exec_always --no-startup-id compton
 exec_always --no-startup-id flashfocus
 exec_always --no-startup-id libinput-gestures-setup start
+exec_always --no-startup-id nitrogen --restore
