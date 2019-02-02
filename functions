@@ -104,45 +104,6 @@ function lint() {
 	fi
 }
 
-function git-signing-on() {
-    export GIT_SIGN="ON"
-
-    if [[ ! "$1" -eq "-q" ]]; then
-        git-signing
-    fi
-}
-
-function git-signing-off() {
-    export GIT_SIGN="OFF"
-
-    if [[ ! "$1" -eq "-q" ]]; then
-        git-signing
-    fi
-}
-
-function git-signing() {
-    echo "Git auto-signing is '$GIT_SIGN'"
-}
-
-function git() {
-	if [ "$1" = "commit" ]; then
-		shift
-		if [ "$1" == "-ns" ] || [ "$GIT_SIGN" == "OFF" ]; then
-			if [ "$1" == "-ns" ]; then
-                shift
-            fi
-			command git commit "$@"
-        elif [ "$GIT_SIGN" == "ON" ]; then
-			echo "Auto-signing git commit!"
-            command git commit -S "$@"
-        else
-            echo "Incorrect git commit macro (\$GIT_SIGN might be wrong?)"
-		fi
-	else
-		command git "$@"
-	fi
-}
-
 alias acp='update';
 alias gcp='update';
 function update() {
