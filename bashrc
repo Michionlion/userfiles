@@ -78,10 +78,6 @@ fi
 # shellcheck source=/dev/null
 source "$SCRIPT_PATH/functions"
 
-
-# set git-signing to be on at the start always
-git-signing-on -q
-
 # addon sourcing
 
 if [ -z "$ENHANCD_ENABLED" ]; then
