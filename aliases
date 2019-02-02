@@ -32,6 +32,11 @@ alias gradlew='./gradlew'
 alias gradleci='gradle build --continuous'
 alias hrm='\rm -rf'
 
+alias slack='slack-term'
+alias slac='slack-term'
+alias slac-term='slack-term'
+
+
 alias suspend='systemctl suspend'
 alias sleep='suspend'
 
