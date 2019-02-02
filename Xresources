@@ -3,7 +3,7 @@ XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.saveLines: 10000
 
 XTerm.vt100.translations: #override \n\
-    Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \n\
+    Shift <Key>Insert: insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
     Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
