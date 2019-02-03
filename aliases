@@ -40,6 +40,7 @@ alias slac-term='slack-term'
 alias suspend='systemctl suspend'
 alias sleep='suspend'
 
+alias gr='gradle'
 alias cr='crystal'
 
 alias leak-test='valgrind --leak-check=full --show-leak-kinds=all'
