@@ -1,0 +1,21 @@
+# To set up this file as a global git ignore:
+# git config --global core.excludesfile <userfiles>/global_gitignore
+
+# Node
+npm-debug.log
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# vi
+*~
+*.s[wu]p
+
+# Gradle
+.gradle/
+
+# Atom
+.atom-build.*
