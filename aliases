@@ -36,6 +36,7 @@ alias slack='slack-term'
 alias slac='slack-term'
 alias slac-term='slack-term'
 
+alias texclean='rm -i *.aux *.fls *.dvi *.blg *.fdb_latexmk *.log *.out *.toc *.lof *.bbl'
 
 alias suspend='systemctl suspend'
 alias sleep='suspend'
