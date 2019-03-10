@@ -78,6 +78,11 @@ fi
 # shellcheck source=/dev/null
 source "$SCRIPT_PATH/functions"
 
+
+if type pipenv &> /dev/null; then
+    eval "$(pipenv --completion)"
+fi
+
 # addon sourcing
 
 if [ -z "$ENHANCD_ENABLED" ]; then
