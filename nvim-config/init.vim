@@ -10,6 +10,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
 call plug#end()
 
 let mapleader="\<SPACE>"
