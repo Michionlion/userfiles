@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -11,6 +12,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'sheerun/vim-polyglot'
+Plug 'Elive/vim-colorscheme-elive'
 call plug#end()
 
 let mapleader="\<SPACE>"
@@ -35,6 +37,9 @@ autocmd VimEnter * if (argc() == 0 && !exists("s:std_in")) | NERDTree | endif
 " Open NERDTree if a directory is opened
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
 
+let g:signify_vcs_list = [ 'git', 'hg', 'bzr', 'svn', 'cvs', 'perforce' ]
+let g:signify_realtime = 1
+
 " Relative numbering toggle function
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -54,7 +59,7 @@ filetype plugin indent on
 
 autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 
-" set autoindent
+"set autoindent
 "set tabstop=4
 "set shiftwidth=4
 "set softtabstop=4
@@ -90,7 +95,11 @@ set ruler
 set noshowmode
 
 " syntax
-syntax on
+syntax enable
+
+" colorscheme
+let badwolf_background = 4
+colorscheme elive
 
 " markdown
 let g:vim_markdown_folding_disabled = 1
