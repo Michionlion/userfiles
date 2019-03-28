@@ -56,7 +56,7 @@ nnoremap <Leader>r :call NumberToggle()<cr>
 " indentation settings
 filetype on
 filetype plugin indent on
-
+let g:indentLine_setConceal = 0
 autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 
 "set autoindent
