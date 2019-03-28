@@ -13,7 +13,7 @@ XTerm.vt100.translations: #override \n\
 *.background:  #002b36
 *.cursorColor:  #93a1a1
 ! black
-.color0:      #002b36
+*.color0:      #002b36
 *.color8:      #657b83
 ! red
 *.color1:      #dc322f
@@ -59,3 +59,5 @@ Xft.hinting: 1
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
 
+! st settings
+*.font: DejaVuSansMono Nerd Font Mono:size=9:antialias=true:autohint=true
