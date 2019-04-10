@@ -53,17 +53,17 @@ endfunc
 " Toggle between normal and relative numbering with leader-r
 nnoremap <Leader>r :call NumberToggle()<cr>
 
+set autoindent
+set tabstop=4
+"set shiftwidth=4
+"set softtabstop=4
+"set expandtab
+
 " indentation settings
 filetype on
 filetype plugin indent on
 let g:indentLine_setConceal = 0
 autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
-
-"set autoindent
-"set tabstop=4
-"set shiftwidth=4
-"set softtabstop=4
-"set expandtab
 
 set showmatch
 set number
