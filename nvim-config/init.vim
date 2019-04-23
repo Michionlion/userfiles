@@ -13,6 +13,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'sheerun/vim-polyglot'
 Plug 'Elive/vim-colorscheme-elive'
+Plug 'w0rp/ale'
 call plug#end()
 
 let mapleader="\<SPACE>"
@@ -39,6 +40,8 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 let g:signify_vcs_list = [ 'git', 'hg', 'bzr', 'svn', 'cvs', 'perforce' ]
 let g:signify_realtime = 1
+
+let g:airline#extensions#ale#enabled = 1
 
 " Relative numbering toggle function
 function! NumberToggle()
