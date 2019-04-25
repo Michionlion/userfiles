@@ -6,7 +6,7 @@ function connect() {
     if [[ -z "$network" ]]; then
         echo "Available Networks:"
         echo "$networks"
-    elif [[ ! "$networks" =~ "$network" ]]; then
+    elif [[ ! "$networks" =~ $network ]]; then
         echo "$network does not have a netctl profile!"
     else
         netctl start "$network"
@@ -20,7 +20,7 @@ function disconnect() {
     export NETWORK=""
     echo "Disconnected!"
     echo "Available Networks:"
-    echo "$(netctl list)"
+    netctl list
 }
 
 function trash() {
@@ -39,6 +39,19 @@ function trash() {
 function clear-trash() {
     command rm -rf ~/.trash;
     mkdir ~/.trash;
+}
+
+function docker() {
+    if [[ -z "$1" ]] && [[ "$1" =~ (enter|ssh) ]]; then
+	if [[ -n "$2" ]]; then
+	    command docker exec -it "$2" "/bin/sh"
+	else
+	    echo "No docker container provided, available containers:"
+	    command docker ps
+	fi
+    else
+	command docker "$@"
+    fi
 }
 
 function build() {
@@ -168,7 +181,7 @@ function gvc() {
 	command git add version;
 	desc="Commit with v$OVN, message: $1";
 	command git commit -m "$desc";
-	echo ---- v$OVN commit finished! ----;
+	echo "---- v$OVN commit finished! ----";
 }
 
 char() {
