@@ -41,17 +41,13 @@ function clear-trash() {
     mkdir ~/.trash;
 }
 
-function docker() {
-    if [[ -z "$1" ]] && [[ "$1" =~ (enter|ssh) ]]; then
-	if [[ -n "$2" ]]; then
-	    command docker exec -it "$2" "/bin/sh"
+function docker-ssh() {
+	if [[ -n "$1" ]]; then
+	    command docker exec -it "$1" "/bin/sh"
 	else
 	    echo "No docker container provided, available containers:"
 	    command docker ps
 	fi
-    else
-	command docker "$@"
-    fi
 }
 
 function build() {
