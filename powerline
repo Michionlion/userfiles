@@ -29,5 +29,5 @@ elif [ "$POWERLINE_VERSION" = "go" ]; then
     echo "POWERLINE-GO NOT INSTALLED"
   fi
 elif [ "$POWERLINE_VERSION" = "bash" ]; then
-    PS1="\T on \h in \d>"
+    PS1="\e[33;1m\h\e[0m \e[2mat\e[0m \e[32;1m\@\e[0m \e[2min\e[0m [\e[34;1m\w\e[0m]\n\e[94;2m$>\e[0m"
 fi
