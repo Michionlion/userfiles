@@ -1,6 +1,9 @@
 #!/bin/bash
 SCRIPT_PATH="$HOME/.userfiles"
 
+# add bin to path
+export PATH="$PATH:$SCRIPT_PATH/bin"
+
 HISTCONTROL=ignoreboth
 shopt -s histappend
 HISTSIZE=1000
@@ -50,9 +53,6 @@ source "$SCRIPT_PATH/aliases"
 # shellcheck source=/dev/null
 # source "$SCRIPT_PATH/env_vars"
 
-# add bin to path
-export PATH="$PATH:$SCRIPT_PATH/bin"
-
 # chase symlinks
 set -o physical
 
@@ -71,7 +71,7 @@ fi
 
 # stop mouse accel
 if type xset &> /dev/null; then
-    xset m 0 0
+    xset m 0 0 &> /dev/null
 fi
 
 # source functions file in userfiles
