@@ -38,26 +38,24 @@ XTerm.vt100.translations: #override \n\
 *.color15:     #fdf6e3
 
 ! URxvt settings
-URxvt*scrollBar:         true
-URxvt*scrollBar_right:   true
-URxvt*transparent:       false
-URxvt.font: xft:AnonymousProMinus Nerd Font:pixelsize=15
-URxvt.letterSpace: 0
-*antialias:  true
-*autohint:   true
+!URxvt*scrollBar:         true
+!URxvt*scrollBar_right:   true
+!URxvt*transparent:       false
+!URxvt.font: xft:AnonymousProMinus Nerd Font:pixelsize=15
+!URxvt.letterSpace: 0
+!*antialias:  true
+!*autohint:   true
 
 ! XTerm settings
-XTerm.vt100.faceName: DejaVuSansMono Nerd Font Mono
-!XTerm.vt100.faceName: DejaVu Sans Mono
-!XTerm.vt100.faceName: AnonymousProMinus Nerd Font
-XTerm.vt100.faceSize: 9
-XTerm.scaleHeight: 1.0
+!XTerm.vt100.faceName: DejaVuSansMono Nerd Font Mono
+XTerm.vt100.faceName: UbuntuMono Nerd Font Mono
+XTerm.vt100.faceSize: 8
 Xcursor.theme: default
 Xcursor.theme_core: true
 Xft.antialias: 1
 Xft.hinting: 1
 Xft.hintstyle: hintfull
-Xft.rgba: rgb
+Xft.rgba: rgba
 
 ! st settings
-*.font: DejaVuSansMono Nerd Font Mono:size=9:antialias=true:autohint=true
+!*.font: DejaVuSansMono Nerd Font Mono:size=9:antialias=true:autohint=true

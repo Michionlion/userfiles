@@ -4,3 +4,6 @@
 [submodule "addons/enhancd"]
 	path = addons/enhancd
 	url = https://github.com/b4b4r07/enhancd
+[submodule "addons/autojump"]
+	path = addons/autojump
+	url = git@github.com:wting/autojump.git
