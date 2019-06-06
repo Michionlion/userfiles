@@ -34,7 +34,7 @@ for_window [title="i3-float"] floating enable border pixel 2
 # start a terminal
 bindsym $mod+Return exec xterm
 
-bindsym $mod+g exec google-chrome-stable
+bindsym $mod+g exec google-chrome-stable --password-store=gnome
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -190,6 +190,9 @@ bar {
 
 # start compositing engine
 # and other programs
+exec_always --no-startup-id sh -c '/usr/bin/nvidia-settings --load-config-only'
+exec_always --no-startup-id xrdb load ~/.Xresources
+exec_always --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 exec_always --no-startup-id compton
 exec_always --no-startup-id flashfocus
 exec_always --no-startup-id libinput-gestures-setup start
