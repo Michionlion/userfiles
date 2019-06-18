@@ -7,3 +7,6 @@
 [submodule "addons/autojump"]
 	path = addons/autojump
 	url = git@github.com:wting/autojump.git
+[submodule "addons/fast-export"]
+	path = addons/fast-export
+	url = https://github.com/frej/fast-export.git
