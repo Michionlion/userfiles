@@ -26,6 +26,16 @@ if [ -z "$POWERLINE_VERSION" ]; then
 fi
 source $SCRIPT_PATH/powerline
 
+
+# If ~/.inputrc doesn't exist yet: First include the original /etc/inputrc
+# so it won't get overriden
+if [[ ! -a "$HOME/.inputrc" ]]; then
+    echo '$include /etc/inputrc' > "$HOME/.inputrc"
+fi
+
+# Add shell-option to ~/.inputrc to enable case-insensitive tab completion
+echo 'set completion-ignore-case On' >> "$HOME/.inputrc"
+
 if [ -x /usr/bin/dircolors ]; then
     # shellcheck disable=SC2015
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

@@ -19,3 +19,4 @@ Thumbs.db
 
 # Atom
 .atom-build.*
+.classpath-atom
