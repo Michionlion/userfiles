@@ -31,10 +31,10 @@ source $SCRIPT_PATH/powerline
 # so it won't get overriden
 if [[ ! -a "$HOME/.inputrc" ]]; then
     echo '$include /etc/inputrc' > "$HOME/.inputrc"
+    # Add shell-option to ~/.inputrc to enable case-insensitive tab completion
+    echo 'set completion-ignore-case On' >> "$HOME/.inputrc"
 fi
 
-# Add shell-option to ~/.inputrc to enable case-insensitive tab completion
-echo 'set completion-ignore-case On' >> "$HOME/.inputrc"
 
 if [ -x /usr/bin/dircolors ]; then
     # shellcheck disable=SC2015
