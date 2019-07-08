@@ -14,11 +14,22 @@ alias jjar='java -jar'
 #alias build=". ./build"
 #alias run=". ./run"
 alias a='atom .'
+alias vm='vagrant'
+alias vmp='vagrant up'
+alias vms='vagrant ssh'
+alias vmh='vagrnat halt'
 alias open='xdg-open'
 alias tarc='tar -czvf'
 alias tarx='tar -xzvf'
 alias resource='source ~/.bashrc'
 alias chcur='stat -c "%a %n"'
+
+alias light='xbacklight ='
+alias blight='xbacklight'
+alias lightup='xbacklight + 10'
+alias lightdown='xbacklight - 10'
+alias light-up='lightup'
+alias light-down='lightdown'
 
 alias volup='pactl set-sink-volume @DEFAULT_SINK@ +25%'
 alias voldown='pactl set-sink-volume @DEFAULT_SINK@ -25%'
