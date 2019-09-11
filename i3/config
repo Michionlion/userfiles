@@ -142,6 +142,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# move workspace to monitor
+bindsym $mod+] move workspace to output right
+bindsym $mod+[ move workspace to output left
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -193,6 +197,7 @@ bar {
 exec_always --no-startup-id sh -c '/usr/bin/nvidia-settings --load-config-only'
 exec_always --no-startup-id xrdb load ~/.Xresources
 exec_always --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
+exec_always --no-startup-id nm-applet
 exec_always --no-startup-id compton
 exec_always --no-startup-id flashfocus
 exec_always --no-startup-id libinput-gestures-setup start
