@@ -83,6 +83,7 @@ function mkalias () {
     echo alias "$*" >> ~/.userfiles/.aliases
     echo "Made alias $ for *";
 }
+
 function cnl() { command cd "$@" && command ls --color=auto; }
 alias cd='cnl'
 
@@ -178,6 +179,10 @@ function gvc() {
 	desc="Commit with v$OVN, message: $1";
 	command git commit -m "$desc";
 	echo "---- v$OVN commit finished! ----";
+}
+
+function become() {
+	sudo -u "$1" -i
 }
 
 char() {
