@@ -74,9 +74,6 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# show/hide keybindings
-bindsym $mod+Shift+question exec --no-startup-id /usr/bin/remontoire-toggle
-
 # toggle tiling / floating
 bindsym $mod+Shift+f floating toggle
 bindsym $mod+Ctrl+m move to scratchpad
