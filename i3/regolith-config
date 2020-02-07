@@ -188,7 +188,7 @@ new_window pixel 1
 new_float pixel 1
 
 # Specify the distance between windows in pixels. (i3-gaps)
-gaps inner 3
+gaps inner 5
 gaps outer 0
 
 # Only enable gaps on a workspace when there is at least one container
