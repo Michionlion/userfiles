@@ -41,14 +41,12 @@ interval=10
 interval=3
 
 [cpu-usage]
-interval=3
+interval=1
 min_width=100%
-
-[temp]
-interval=5
 
 [battery]
 interval=30
+instance=BAT1
 
 [rofication]
 command=/usr/share/i3xrocks/rofication-statusi3blocks.py
