@@ -78,6 +78,19 @@ function run() {
     fi
 }
 
+alias vol='volume'
+alias setvol='volume'
+function volume() {
+    volume_to_set=$1
+    if [[ "$volume_to_set" == *"%" ]]; then
+	echo "Setting volume to ${volume_to_set}"
+	pactl set-sink-volume @DEFAULT_SINK@ "${volume_to_set}"
+    else
+	echo "Setting volume to ${volume_to_set}%"
+	pactl set-sink-volume @DEFAULT_SINK@ "${volume_to_set}%"
+    fi
+}
+
 function mkalias () {
     alias "$*";
     echo alias "$*" >> ~/.userfiles/.aliases
