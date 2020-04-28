@@ -34,7 +34,7 @@ hide_edge_borders smart
 for_window [title="i3-float"] floating enable border pixel 2
 
 # start a terminal
-bindsym $mod+Return exec $terminal_path -n "st-256color"
+bindsym $mod+Return exec $terminal_path -n "xterm-256color"
 
 # start a web browser
 bindsym $mod+g exec /usr/bin/sensible-browser
