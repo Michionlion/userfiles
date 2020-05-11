@@ -35,7 +35,7 @@ interval=5
 interval=5
 
 [bash-vpn]
-interval=10
+interval=2
 
 [net-traffic]
 interval=3

@@ -74,7 +74,13 @@ function run() {
     done
 
     if [ "$ranscript" = "0" ]; then
-        gradle run --console=plain "$@"
+        if [[ -f "build.gradle" ]]; then
+	    gradle run --console=plain "$@"
+	elif [[ -f package.json ]]; then
+	    yarn run "$@"
+	else
+	    echo "Unknown script $*"
+	fi
     fi
 }
 
