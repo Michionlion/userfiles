@@ -108,7 +108,7 @@ if [ -z "$ENHANCD_ENABLED" ]; then
 	export ENHANCD_ENABLED="true"
 fi
 
-if [ "$ENHANCED_ENABLED" = "true" ]; then
+if [ "$ENHANCD_ENABLED" = "true" ]; then
 	export ENHANCD_HOOK_AFTER_CD="ls"
 	export ENHANCD_DISABLE_DOT=1
 	# shellcheck source=/dev/null
