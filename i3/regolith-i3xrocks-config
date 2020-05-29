@@ -44,13 +44,16 @@ interval=3
 interval=1
 min_width=100%
 
+[memory]
+interval=3
+
 [battery]
 interval=30
 instance=BAT1
 
 [rofication]
-command=/usr/share/i3xrocks/rofication-statusi3blocks.py
-interval=5
+command=rofication-status
+interval=2
 
 # Date Time
 [time]
