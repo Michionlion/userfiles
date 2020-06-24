@@ -1,0 +1,13 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+#
+# This script should be symlinked to $HOME/.bashrc
+
+source "$HOME/.aliases"
+
+export EDITOR=vim
+
+source $HOME/.userfiles/bashrc
+
+export TERM=xterm-256color
