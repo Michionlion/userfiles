@@ -35,6 +35,7 @@ interval=5
 interval=5
 
 [bash-vpn]
+command=/home/saejin/.vpn/bash-vpn
 interval=2
 
 [net-traffic]
