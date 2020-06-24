@@ -1,12 +1,12 @@
 [submodule "addons/git-open"]
 	path = addons/git-open
-	url = git@github.com:paulirish/git-open.git
+	url = https://github.com/paulirish/git-open.git
 [submodule "addons/enhancd"]
 	path = addons/enhancd
 	url = https://github.com/b4b4r07/enhancd
 [submodule "addons/autojump"]
 	path = addons/autojump
-	url = git@github.com:wting/autojump.git
+	url = https://github.com/wting/autojump.git
 [submodule "addons/fast-export"]
 	path = addons/fast-export
 	url = https://github.com/frej/fast-export.git
