@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias cp='rsync -avz'
+alias cp='rsync -ah --no-i-r --info=progress2'
 alias bfg='java -jar ~/.userfiles/bin/bfg.jar'
 alias g='git'
 alias gpl='git pull'
