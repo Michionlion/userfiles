@@ -104,13 +104,22 @@ fi
 
 # addon sourcing
 
+# source anything in opt/*/bin
+
+#for optfolder in /opt/*; do
+#    if [[ -d "$optfolder/bin" ]]; then
+#        echo "$optfolder/bin exists!"
+#        export PATH="$PATH:$optfolder/bin"
+#    fi
+#done
+
 if [ -z "$ENHANCD_ENABLED" ]; then
-	export ENHANCD_ENABLED="true"
+    export ENHANCD_ENABLED="true"
 fi
 
 if [ "$ENHANCD_ENABLED" = "true" ]; then
-	export ENHANCD_HOOK_AFTER_CD="ls"
-	export ENHANCD_DISABLE_DOT=1
-	# shellcheck source=/dev/null
-	source "$SCRIPT_PATH/addons/enhancd/init.sh"
+    export ENHANCD_HOOK_AFTER_CD="ls"
+    export ENHANCD_DISABLE_DOT=1
+    # shellcheck source=/dev/null
+    source "$SCRIPT_PATH/addons/enhancd/init.sh"
 fi

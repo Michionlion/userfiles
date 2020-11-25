@@ -31,6 +31,10 @@ eval "$(hub alias -s)"
 export SDKMAN_DIR="/home/saejin/.sdkman"
 [[ -s "/home/saejin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/saejin/.sdkman/bin/sdkman-init.sh"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export PATH="$(yarn global bin):$PATH"
 #eval "$(grunt --completion=bash)"
 
@@ -38,3 +42,7 @@ export VAGRANT_SSH_KEY=$HOME/.ssh/id_rsab
 export CAS_MACHINE=LINUX
 export TERM=xterm-256color
 export GRADLE_USER_HOME=$GRADLE_HOME
+
+function ckan() {
+  x11docker --share ${1:-/mnt/work/games/ksp-modded} -- -- michionlion/kerbal-ckan:latest ckan gui
+}
