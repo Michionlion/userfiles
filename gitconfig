@@ -1,0 +1,21 @@
+[user]
+	email = saejinmh@va.wagner.com
+	name = Saejin Mahlau-Heinert
+[core]
+	excludesfile = /home/saejin/.userfiles/global_gitignore
+	autocrlf = input
+[push]
+	default = matching
+	followTags = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[alias]
+	showtrackedignored = !\ncd \"${GIT_PREFIX}\" &&\nuntracked_list=$(git rev-parse --git-dir)/ignored-untracked.txt &&\ngit ls-files -o -i --exclude-standard >\"${untracked_list}\" &&\nGIT_INDEX_FILE=\"\" git ls-files -o -i --exclude-standard | grep -Fvxf \"${untracked_list}\" &&\nrm -rf \"${untracked_list}\"
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+[fetch]
+	prune = true
