@@ -4,6 +4,8 @@
 [core]
 	excludesfile = /home/saejin/.userfiles/global_gitignore
 	autocrlf = input
+[color]
+	ui = true
 [push]
 	default = matching
 	followTags = true
