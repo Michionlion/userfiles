@@ -31,5 +31,5 @@ elif [ "$POWERLINE_VERSION" = "go" ]; then
 elif [ "$POWERLINE_VERSION" = "bash" ]; then
     res="\e[0m"
     dim="\e[2m"
-    PS1="\e[32;1m\u${res} ${dim}at${res} \e[33;1m\h${res} ${dim}in${res} \e[34;1m\w${res}\n\e[94;2m$>${res}"
+    PS1="\e[32;1m\u${res} ${dim}at${res} \e[33;1m\h${res} ${dim}in${res} \e[34;1m\w${res}\n\e[94m$>${res}"
 fi
