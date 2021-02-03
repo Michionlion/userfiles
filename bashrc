@@ -22,7 +22,7 @@ fi
 
 # default to go if $POWERLINE_VERSION is unset or empty
 if [ -z "$POWERLINE_VERSION" ]; then
-    export POWERLINE_VERSION="go"
+    export POWERLINE_VERSION="bash"
 fi
 source $USERFILES/powerline
 
@@ -103,7 +103,7 @@ fi
 
 # addon sourcing
 
-# source anything in opt/*/bin
+# source anything in /opt/*/bin
 
 #for optfolder in /opt/*; do
 #    if [[ -d "$optfolder/bin" ]]; then
@@ -112,11 +112,7 @@ fi
 #    fi
 #done
 
-if [ -z "$ENHANCD_ENABLED" ]; then
-    export ENHANCD_ENABLED="true"
-fi
-
-if [ "$ENHANCD_ENABLED" = "true" ]; then
+if [[ "$ENHANCD_ENABLED" == "true" ]]; then
     export ENHANCD_HOOK_AFTER_CD="ls"
     export ENHANCD_DISABLE_DOT=1
     # shellcheck source=/dev/null
