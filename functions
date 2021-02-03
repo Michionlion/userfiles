@@ -42,12 +42,12 @@ function clear-trash() {
 }
 
 function docker-ssh() {
-	if [[ -n "$1" ]]; then
-	    command docker exec -it "$1" "/bin/sh"
-	else
-	    echo "No docker container provided, available containers:"
-	    command docker ps
-	fi
+    if [[ -n "$1" ]]; then
+        command docker exec -it "$1" "/bin/sh"
+    else
+        echo "No docker container provided, available containers:"
+        command docker ps
+    fi
 }
 
 function build() {
@@ -75,12 +75,12 @@ function run() {
 
     if [ "$ranscript" = "0" ]; then
         if [[ -f "build.gradle" ]]; then
-	    gradle run --console=plain "$@"
-	elif [[ -f package.json ]]; then
-	    yarn run "$@"
-	else
-	    echo "Unknown script $*"
-	fi
+        gradle run --console=plain "$@"
+    elif [[ -f package.json ]]; then
+        yarn run "$@"
+    else
+        echo "Unknown script $*"
+    fi
     fi
 }
 
@@ -89,11 +89,11 @@ alias setvol='volume'
 function volume() {
     volume_to_set=$1
     if [[ "$volume_to_set" == *"%" ]]; then
-	echo "Setting volume to ${volume_to_set}"
-	pactl set-sink-volume @DEFAULT_SINK@ "${volume_to_set}"
+    echo "Setting volume to ${volume_to_set}"
+    pactl set-sink-volume @DEFAULT_SINK@ "${volume_to_set}"
     else
-	echo "Setting volume to ${volume_to_set}%"
-	pactl set-sink-volume @DEFAULT_SINK@ "${volume_to_set}%"
+    echo "Setting volume to ${volume_to_set}%"
+    pactl set-sink-volume @DEFAULT_SINK@ "${volume_to_set}%"
     fi
 }
 
@@ -118,35 +118,35 @@ function lint() {
         for path in "$@"; do
             filename=$(basename "$1")
             ext=$([[ "$filename" = *.* ]] && echo ".${filename##*.}" || echo '')
-			case "$path" in
-			*.py)
-				echo "Using autopep8 for $path"
-				autopep8 -i "$path"
-				;;
-			*)
-				echo "Unable to find linter for $ext files"
-				;;
-			esac
-		done
-	else
-		echo "Usage: lint <file(s)>";
-	fi
+            case "$path" in
+            *.py)
+                echo "Using autopep8 for $path"
+                autopep8 -i "$path"
+                ;;
+            *)
+                echo "Unable to find linter for $ext files"
+                ;;
+            esac
+        done
+    else
+        echo "Usage: lint <file(s)>";
+    fi
 }
 
 alias acp='update';
 alias gcp='update';
 function update() {
-	if [[ $1 =~ force|--force|-f ]]; then
-		git add -A;
-		git status;
-		if [[ -z "$2" ]]; then
-			git commit -m "updates";
-		else
-			git commit -m "$2";
-		fi
-		git push;
-		return;
-	elif [[ $1 =~ q|-q|--quiet|quiet ]]; then
+    if [[ $1 =~ force|--force|-f ]]; then
+        git add -A;
+        git status;
+        if [[ -z "$2" ]]; then
+            git commit -m "updates";
+        else
+            git commit -m "$2";
+        fi
+        git push;
+        return;
+    elif [[ $1 =~ q|-q|--quiet|quiet ]]; then
         git add -A;
         git status;
         if [[ -z "$2" ]]; then
@@ -163,61 +163,65 @@ function update() {
         return;
     fi
 
-	git status;
-	read -r -p 'Add? (y/n): ' ans;
-	if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
-		git add -A;
-		git status;
-	fi
-	read -r -p 'Commit? (y/n) ' ans;
-	if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
-		if [ "$#" -gt 0 ]; then
-			git commit -m "$1";
-		else
-			read -r -p 'Message: ' ans
-			if [[ -z "${ans// }" ]]; then
-				git commit -m "updates";
-			else
-				git commit -m "$ans";
-			fi
-		fi
-	fi
+    git status;
+    read -r -p 'Add? (y/n): ' ans;
+    if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
+        git add -A;
+        git status;
+    fi
+    read -r -p 'Commit? (y/n) ' ans;
+    if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
+        if [ "$#" -gt 0 ]; then
+            git commit -m "$1";
+        else
+            read -r -p 'Message: ' ans
+            if [[ -z "${ans// }" ]]; then
+                git commit -m "updates";
+            else
+                git commit -m "$ans";
+            fi
+        fi
+    fi
 
-	read -r -p 'Push? (y/n) ' ans;
-	if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
-		git push;
-	fi
+    read -r -p 'Push? (y/n) ' ans;
+    if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
+        git push;
+    fi
 }
 
 function gvc() {
-	# this doesn't work
-	OVN=$(echo "$(cat version) + 1" | bc);
-	echo "$OVN" > version;
-	echo "Committing with version $OVN...";
-	command git add version;
-	desc="Commit with v$OVN, message: $1";
-	command git commit -m "$desc";
-	echo "---- v$OVN commit finished! ----";
+    # this doesn't work
+    OVN=$(echo "$(cat version) + 1" | bc);
+    echo "$OVN" > version;
+    echo "Committing with version $OVN...";
+    command git add version;
+    desc="Commit with v$OVN, message: $1";
+    command git commit -m "$desc";
+    echo "---- v$OVN commit finished! ----";
 }
 
 function become() {
-	sudo -u "$1" -i
+    sudo -u "$1" -i
 }
 
 char() {
-	printf '%03o' "$1";
-	echo;
+    printf '%03o' "$1";
+    echo;
 }
 
 ascii() {
-	printf '%d' "'$1";
-	echo;
+    printf '%d' "'$1";
+    echo;
 }
 alias asci='ascii';
 
+codepoint() {
+    echo -n "$1" | iconv -f utf8 -t utf32le | hexdump -v -e '8/4 "0x%04x " "\n"' | sed -re"s/0x /   /g"
+}
+
 odt-to-pdf() {
-	newname="$(basename "$1" .odt).pdf";
-	pandoc "$1" -f odt -t latex -s -o  "$newname";
-	evince "$newname";
-	mv "$1" ".$1";
+    newname="$(basename "$1" .odt).pdf";
+    pandoc "$1" -f odt -t latex -s -o  "$newname";
+    evince "$newname";
+    mv "$1" ".$1";
 }
