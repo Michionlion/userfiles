@@ -1,8 +1,8 @@
 #!/bin/bash
-SCRIPT_PATH="$HOME/.userfiles"
+USERFILES="$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")"
 
 # add bin to path
-export PATH="$PATH:$SCRIPT_PATH/bin"
+export PATH="$PATH:$USERFILES/bin"
 
 HISTCONTROL=ignoreboth
 shopt -s histappend
@@ -24,8 +24,7 @@ fi
 if [ -z "$POWERLINE_VERSION" ]; then
     export POWERLINE_VERSION="go"
 fi
-source $SCRIPT_PATH/powerline
-
+source $USERFILES/powerline
 
 # If ~/.inputrc doesn't exist yet: First include the original /etc/inputrc
 # so it won't get overriden
@@ -66,11 +65,11 @@ fi
 
 # source aliases file in userfiles
 # shellcheck source=/dev/null
-source "$SCRIPT_PATH/aliases"
+source "$USERFILES/aliases"
 
 # source environment variables file in userfiles
 # shellcheck source=/dev/null
-# source "$SCRIPT_PATH/env_vars"
+# source "$USERFILES/env_vars"
 
 # chase symlinks
 set -o physical
@@ -95,7 +94,7 @@ fi
 
 # source functions file in userfiles
 # shellcheck source=/dev/null
-source "$SCRIPT_PATH/functions"
+source "$USERFILES/functions"
 
 
 if type pipenv &> /dev/null; then
@@ -121,5 +120,5 @@ if [ "$ENHANCD_ENABLED" = "true" ]; then
     export ENHANCD_HOOK_AFTER_CD="ls"
     export ENHANCD_DISABLE_DOT=1
     # shellcheck source=/dev/null
-    source "$SCRIPT_PATH/addons/enhancd/init.sh"
+    source "$USERFILES/addons/enhancd/init.sh"
 fi
