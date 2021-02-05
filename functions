@@ -41,6 +41,11 @@ function clear-trash() {
     mkdir ~/.trash;
 }
 
+function reset-perm() {
+    find "$1" -type d -print0 | xargs -0 chmod 0775
+    find "$1" -type f -print0 | xargs -0 chmod 0664
+}
+
 function docker-ssh() {
     if [[ -n "$1" ]]; then
         command docker exec -it "$1" "/bin/sh"
