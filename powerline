@@ -1,35 +1,40 @@
 #!/bin/bash
+# powerline-go is the main version I use -- other configurations may not work
+# bash is a good fallback for basic prompts
 
 export POWERLINE_PIP_HOME="$HOME/.local/lib/python3.6/site-packages/powerline"
-
-if [ "$POWERLINE_VERSION" = "python" ]; then
-  if [ -f $(which powerline-daemon) ]; then
+if [[ "$POWERLINE_VERSION" == "python" ]]; then
+  if [[ -f "$(which powerline-daemon)" ]]; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
-    . $POWERLINE_PIP_HOME/bindings/bash/powerline.sh
+    source "$POWERLINE_PIP_HOME/bindings/bash/powerline.sh"
   else
-    echo "POWERLINE NOT INSTALLED"
+    echo "userfiles/powerline: 'powerline-daemon' not in \$PATH"
   fi
-elif [ "$POWERLINE_VERSION" = "haskell" ]; then
-  if [ -f $(which powerline-hs) ]; then
+elif [[ "$POWERLINE_VERSION" == "haskell" ]]; then
+  if [[ -f "$(which powerline-hs)" ]]; then
     POWERLINE_COMMAND=powerline-hs
     POWERLINE_CONFIG_COMMAND=/bin/true
-    . $POWERLINE_PIP_HOME/bindings/bash/powerline.sh
+    source "$POWERLINE_PIP_HOME/bindings/bash/powerline.sh"
   else
-    echo "POWERLINE-HS NOT INSTALLED"
+    echo "userfiles/powerline: 'powerline-hs' not in \$PATH"
 fi
-elif [ "$POWERLINE_VERSION" = "go" ]; then
-  if [ -f $(which powerline-go) ]; then
+elif [[ "$POWERLINE_VERSION" == "go" ]]; then
+  if [[ -f "$(which powerline-go)" ]]; then
     function _update_ps1() {
-      PS1="$(powerline-go -error $? -numeric-exit-codes -shell bash -path-aliases /mnt/work/projects=projects,/mnt/work/resources=resources,/mnt/work/projects/wsps/vagrantfiles=vagrantfiles, -modules host,venv,cwd,perms,docker,git,jobs,exit -newline)"
+      PS1="$(powerline-go -error $? -numeric-exit-codes -shell bash -path-aliases /home/saejin/projects=projects,/home/saejin/resources=resources,/home/saejin/projects/wsps/vagrantfiles=vagrantfiles, -modules host,venv,cwd,perms,docker,git,jobs,exit -newline)"
     }
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
   else
-    echo "POWERLINE-GO NOT INSTALLED"
+    echo "userfiles/powerline: 'powerline-go' not in \$PATH"
   fi
-elif [ "$POWERLINE_VERSION" = "bash" ]; then
-    res="\e[0m"
-    dim="\e[2m"
-    PS1="\e[32;1m\u${res} ${dim}at${res} \e[33;1m\h${res} ${dim}in${res} \e[34;1m\w${res}\n\e[94m$>${res}"
+elif [[ "$POWERLINE_VERSION" == "bash" ]]; then
+    reset="\[\e[0m\]"
+    dim="\[\e[2m\]"
+    green="\[\e[32;1m\]"
+    yellow="\[\e[33;1m\]"
+    blue="\[\e[34;1m\]"
+    prompt="\[\e[94m\]"
+    PS1="${green}\u${reset} ${dim}at${reset} ${yellow}\h${reset} ${dim}in${reset} ${blue}\w${reset}\n${prompt}$>${reset}"
 fi
