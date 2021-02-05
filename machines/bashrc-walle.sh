@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -14,7 +15,7 @@ source $HOME/.userfiles/bashrc
 
 source $HOME/.vpn/control.sh
 
-[[ -s /home/saejin/.autojump/etc/profile.d/autojump.sh ]] && source /home/saejin/.autojump/etc/profile.d/autojump.sh
+[[ -s /usr/share/autojump/autojump.sh ]] && source /usr/share/autojump/autojump.sh
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
