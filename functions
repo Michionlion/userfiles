@@ -64,7 +64,7 @@ function build() {
         fi
     done
 
-    if [ "$ranscript" = "0" ]; then
+    if [[ "$ranscript" = "0" ]]; then
         gradle build "$@"
     fi
 }
@@ -77,7 +77,7 @@ function run() {
         ranscript=1
     done
 
-    if [ "$ranscript" = "0" ]; then
+    if [[ "$ranscript" = "0" ]]; then
         if [[ -f "build.gradle" ]]; then
         gradle run --console=plain "$@"
     elif [[ -f package.json ]]; then
@@ -118,7 +118,7 @@ function resetwifi() {
 }
 
 function lint() {
-    if [ "$#" -gt 0 ]; then
+    if [[ "$#" -gt 0 ]]; then
         for path in "$@"; do
             filename=$(basename "$1")
             ext=$([[ "$filename" = *.* ]] && echo ".${filename##*.}" || echo '')
@@ -133,7 +133,7 @@ function lint() {
             esac
         done
     else
-        echo "Usage: lint <file(s)>";
+    echo "Usage: lint <file(s)>";
     fi
 }
 
@@ -169,13 +169,13 @@ function update() {
 
     git status;
     read -r -p 'Add? (y/n): ' ans;
-    if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
+    if [[ "$ans" == "y" ]] || [[ -z "${ans// }" ]]; then
         git add -A;
         git status;
     fi
     read -r -p 'Commit? (y/n) ' ans;
-    if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
-        if [ "$#" -gt 0 ]; then
+    if [[ "$ans" == "y" ]] || [[ -z "${ans// }" ]]; then
+        if [[ "$#" -gt 0 ]]; then
             git commit -m "$1";
         else
             read -r -p 'Message: ' ans
@@ -188,7 +188,7 @@ function update() {
     fi
 
     read -r -p 'Push? (y/n) ' ans;
-    if [ "$ans" == "y" ] || [ -z "${ans// }" ]; then
+    if [[ "$ans" == "y" ]] || [[ -z "${ans// }" ]]; then
         git push;
     fi
 }
@@ -208,22 +208,22 @@ function become() {
     sudo -u "$1" -i
 }
 
-char() {
+function char() {
     printf '%03o' "$1";
     echo;
 }
 
-ascii() {
+function ascii() {
     printf '%d' "'$1";
     echo;
 }
 alias asci='ascii';
 
-codepoint() {
+function codepoint() {
     echo -n "$1" | iconv -f utf8 -t utf32le | hexdump -v -e '8/4 "0x%04x " "\n"' | sed -re"s/0x /   /g"
 }
 
-odt-to-pdf() {
+function odt-to-pdf() {
     newname="$(basename "$1" .odt).pdf";
     pandoc "$1" -f odt -t latex -s -o  "$newname";
     evince "$newname";
