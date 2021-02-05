@@ -110,13 +110,6 @@ function mkalias () {
 function cnl() { command cd "$@" && command ls --color=auto; }
 alias cd='cnl'
 
-function resetwifi() {
-    sudo modprobe -r ath9k;
-    echo Disabled WIFI;
-    sudo modprobe ath9k;
-    echo Enabled WIFI;
-}
-
 function lint() {
     if [[ "$#" -gt 0 ]]; then
         for path in "$@"; do
@@ -193,16 +186,44 @@ function update() {
     fi
 }
 
-function gvc() {
-    # this doesn't work
-    OVN=$(echo "$(cat version) + 1" | bc);
-    echo "$OVN" > version;
-    echo "Committing with version $OVN...";
-    command git add version;
-    desc="Commit with v$OVN, message: $1";
-    command git commit -m "$desc";
-    echo "---- v$OVN commit finished! ----";
-}
+# function git-signing-on() {
+#     export GIT_SIGN="ON"
+
+#     if [[ ! "$1" -eq "-q" ]]; then
+#         git-signing
+#     fi
+# }
+
+# function git-signing-off() {
+#     export GIT_SIGN="OFF"
+
+#     if [[ ! "$1" -eq "-q" ]]; then
+#         git-signing
+#     fi
+# }
+
+# function git-signing() {
+#     echo "Git auto-signing is '$GIT_SIGN'"
+# }
+
+# function git() {
+# 	if [[ "$1" = "commit" ]]; then
+# 		shift
+# 		if [[ "$1" == "-ns" ]] || [[ "$GIT_SIGN" == "OFF" ]]; then
+# 			if [[ "$1" == "-ns" ]]; then
+#                 shift
+#             fi
+# 			command git commit "$@"
+#         elif [[ "$GIT_SIGN" == "ON" ]]; then
+# 			echo "Auto-signing git commit!"
+#             command git commit -S "$@"
+#         else
+#             echo "Incorrect git commit macro (\$GIT_SIGN might be wrong?)"
+# 		fi
+# 	else
+# 		command git "$@"
+# 	fi
+# }
 
 function become() {
     sudo -u "$1" -i
