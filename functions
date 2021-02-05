@@ -46,12 +46,11 @@ function reset-perm() {
     find "$1" -type f -print0 | xargs -0 chmod 0664
 }
 
-function docker-ssh() {
-    if [[ -n "$1" ]]; then
-        command docker exec -it "$1" "/bin/sh"
+function docker () {
+    if [[ $1 == "enter" ]]; then
+        command docker exec -it "$2" /bin/bash
     else
-        echo "No docker container provided, available containers:"
-        command docker ps
+        command docker "$@"
     fi
 }
 
