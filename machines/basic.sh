@@ -4,6 +4,13 @@
 #
 # This script should be symlinked to $HOME/.bashrc
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+umask 002
+
 source "$HOME/.aliases"
 
 export EDITOR=vim
