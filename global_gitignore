@@ -28,6 +28,7 @@ Thumbs.db
 .editorconfig
 jsconfig.json
 tsconfig.json
+.classpath
 
 # Gradle
 .gradle/

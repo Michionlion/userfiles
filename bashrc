@@ -4,6 +4,10 @@ USERFILES="$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")"
 # add bin to path
 export PATH="$PATH:$USERFILES/bin"
 
+# add .local/bin to path
+export PATH="$HOME/.local/bin:$PATH"
+
+
 HISTCONTROL=ignoreboth
 shopt -s histappend
 HISTSIZE=1000
