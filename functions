@@ -56,35 +56,41 @@ function docker () {
 
 function build() {
     names=$(command ls build*.*sh 2> /dev/null)
-    ranscript=0
+    built=false
     for script in $names; do
         if [[ "$script" == build* && ! "$script" == *.gradle && -f "$script" ]]; then
             ./"$script" "$@"
-            ranscript=1
+            built=true
         fi
     done
 
-    if [[ "$ranscript" = "0" ]]; then
-        gradle build "$@"
+    if [[ "$built" = false ]]; then
+        if [[ -f "package.json" ]]; then
+            yarn build "$@"
+        elif  [[ "$built" = false && -f "build.gradle" ]]; then
+            gradle build "$@"
+        else
+            echo "No build script found!"
+        fi
     fi
 }
 
 function run() {
     names=$(command ls run*.*sh 2> /dev/null)
-    ranscript=0
+    ran=false
     for script in $names; do
         ./"$script" "$@"
-        ranscript=1
+        ran=true
     done
 
-    if [[ "$ranscript" = "0" ]]; then
+    if [[ "$ran" = false ]]; then
         if [[ -f "build.gradle" ]]; then
-        gradle run --console=plain "$@"
-    elif [[ -f package.json ]]; then
-        yarn run "$@"
-    else
-        echo "Unknown script $*"
-    fi
+            gradle run --console=plain "$@"
+        elif [[ -f package.json ]]; then
+            yarn run "$@"
+        else
+            echo "No run script found!"
+        fi
     fi
 }
 
