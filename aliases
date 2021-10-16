@@ -48,5 +48,4 @@ alias cr='crystal'
 
 alias docker-rmall='docker rm $(docker ps -a -q); docker rmi $(docker images -q)'
 
-alias serve='xdg-open http://localhost:8000 >/dev/null 2>&1 && python3 -m http.server'
 alias leak-test='valgrind --leak-check=full --show-leak-kinds=all'
