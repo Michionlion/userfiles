@@ -100,10 +100,9 @@ fi
 # shellcheck source=/dev/null
 source "$USERFILES/functions"
 
-
-if type pipenv &> /dev/null; then
-    eval "$(pipenv --completion)"
-fi
+# source completions file in userfiles
+# shellcheck source=/dev/null
+source "$USERFILES/completions"
 
 # addon sourcing
 

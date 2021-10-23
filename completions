@@ -1,0 +1,28 @@
+#!/bin/bash
+source "$USERFILES/addons/complete-alias/complete_alias"
+
+# work-around to enable tab-completing for sudo correctly
+alias sudo='sudo'
+complete -F _complete_alias sudo
+
+# aliases
+complete -F _complete_alias cp
+complete -F _complete_alias g
+complete -F _complete_alias jjar
+complete -F _complete_alias vm
+complete -F _complete_alias open
+complete -F _complete_alias tarc
+complete -F _complete_alias tarx
+complete -F _complete_alias gr
+complete -F _complete_alias cr
+complete -F _complete_alias po
+complete -F _complete_alias leak-test
+
+
+
+if type pipenv &> /dev/null; then
+    eval "$(pipenv --completion)"
+else
+    echo 'pipenv not available:'
+    pipenv
+fi
