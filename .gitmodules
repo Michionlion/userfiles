@@ -10,3 +10,6 @@
 [submodule "addons/fast-export"]
 	path = addons/fast-export
 	url = https://github.com/frej/fast-export.git
+[submodule "addons/complete-alias"]
+	path = addons/complete-alias
+	url = https://github.com/cykerway/complete-alias.git
