@@ -14,12 +14,15 @@ alias cd..='cd ..'
 alias jjar='java -jar'
 #alias build=". ./build"
 #alias run=". ./run"
-alias a='atom .'
+alias c='code .'
+alias edit='code .; exit'
 alias vm='vagrant'
 alias vmp='vagrant up'
 alias vms='vagrant ssh'
 alias vmh='vagrant halt'
 alias vmd='vagrant destroy'
+alias vm-status='vagrant global-status --prune'
+
 alias open='xdg-open'
 alias tarc='tar -czvf'
 alias tarx='tar -xzvf'
