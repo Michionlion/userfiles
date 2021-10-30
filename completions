@@ -22,7 +22,8 @@ complete -F _complete_alias leak-test
 
 if type pipenv &> /dev/null; then
     eval "$(pipenv --completion)"
-else
-    echo 'pipenv not available:'
-    pipenv
+fi
+
+if type pipx &> /dev/null; then
+    eval "$(register-python-argcomplete pipx)"
 fi
