@@ -30,7 +30,6 @@ export PATH="$(yarn global bin):$PATH"
 export VAGRANT_SSH_KEY=$HOME/.ssh/id_rsab
 export CAS_MACHINE=LINUX
 export TERM=xterm-256color
-export GRADLE_USER_HOME=$GRADLE_HOME
 
 POWERLINE_VERSION="go"
 source $HOME/.userfiles/bashrc
