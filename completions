@@ -21,7 +21,7 @@ complete -F _complete_alias leak-test
 
 
 if type pipenv &> /dev/null; then
-    eval "$(pipenv --completion)"
+    eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
 fi
 
 if type pipx &> /dev/null; then
