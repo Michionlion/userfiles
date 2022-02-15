@@ -19,10 +19,10 @@ complete -F _complete_alias po
 complete -F _complete_alias leak-test
 
 
-
-if type pipenv &> /dev/null; then
-    eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
-fi
+# FIXME: causing issues with stalling on remote login
+#if type pipenv &> /dev/null; then
+#    eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
+#fi
 
 if type pipx &> /dev/null; then
     eval "$(register-python-argcomplete pipx)"
