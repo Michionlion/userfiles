@@ -49,6 +49,7 @@ alias suspend='systemctl suspend'
 alias gr='gradle'
 alias cr='crystal'
 alias po='poetry'
+alias net='netlify'
 
 alias docker-rmall='docker rm $(docker ps -a -q); docker rmi $(docker images -q)'
 

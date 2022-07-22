@@ -17,7 +17,7 @@ complete -F _complete_alias gr
 complete -F _complete_alias cr
 complete -F _complete_alias po
 complete -F _complete_alias leak-test
-
+complete -F _complete_alias net
 
 # FIXME: causing issues with stalling on remote login
 #if type pipenv &> /dev/null; then

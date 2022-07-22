@@ -46,3 +46,7 @@ export SDKMAN_DIR="/home/saejin/.sdkman"
 export PATH="$PATH:~/.niera/bin"
 . ~/.niera/lib/niera-completion.sh
 # ---- END niera GENERATED SECTION ----
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
