@@ -127,3 +127,6 @@ nnoremap <leader>l <C-w>l
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 let g:airline_solarized_bg='dark'
+
+" Allow saving of files as sudo
+cmap w!! w !sudo tee > /dev/null %
