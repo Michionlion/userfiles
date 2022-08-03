@@ -7,7 +7,6 @@ export PATH="$PATH:$USERFILES/bin"
 # add .local/bin to path
 export PATH="$HOME/.local/bin:$PATH"
 
-
 HISTCONTROL=ignoreboth
 shopt -s histappend
 HISTSIZE=1000
@@ -89,11 +88,6 @@ if ! shopt -oq posix; then
         # shellcheck source=/dev/null
         . /etc/bash_completion
     fi
-fi
-
-# stop mouse accel
-if type xset &> /dev/null; then
-    xset m 0 0 &> /dev/null
 fi
 
 # source functions file in userfiles
