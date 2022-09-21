@@ -44,6 +44,8 @@ alias xclip='xclip -selection c'
 
 alias texclean='rm -i *.aux *.fls *.dvi *.blg *.fdb_latexmk *.log *.out *.toc *.lof *.bbl'
 
+alias ports='lsof -i -P | grep --color=never LISTEN'
+
 alias suspend='systemctl suspend'
 
 alias gr='gradle'

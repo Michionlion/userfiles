@@ -8,6 +8,8 @@
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
 export EDITOR=vim
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 source "$HOME/.aliases"
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -17,7 +19,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-eval "$(hub alias -s)"
+if command -v hub 1>/dev/null 2>&1; then
+  eval "$(hub alias -s)"
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -30,9 +34,12 @@ source $HOME/.userfiles/bashrc
 
 source $HOME/.vpn/control.sh
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# configure Docker
+export COMPOSE_DOCKER_CLI_BUILD=1
 
 [[ -s /opt/homebrew/etc/profile.d/autojump.sh ]] && source /opt/homebrew/etc/profile.d/autojump.sh
+
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # ---- BEGIN niera GENERATED SECTION ----
 export PATH="$PATH:~/.niera/bin"

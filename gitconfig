@@ -2,7 +2,7 @@
 	email = saejinmh@va.wagner.com
 	name = Saejin Mahlau-Heinert
 [core]
-	excludesfile = /home/saejin/.userfiles/global_gitignore
+	excludesfile = ~/.userfiles/global_gitignore
 	autocrlf = input
 [color]
 	ui = true
@@ -22,3 +22,5 @@
 	glog = log --graph --all
 [fetch]
 	prune = true
+[init]
+	defaultBranch = main
