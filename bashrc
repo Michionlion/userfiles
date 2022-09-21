@@ -37,8 +37,7 @@ if [[ ! -a "$HOME/.inputrc" ]]; then
     echo 'set completion-ignore-case On' >> "$HOME/.inputrc"
 fi
 
-
-if [ -x /usr/bin/dircolors ]; then
+if command -v dircolors 1>/dev/null 2>&1; then
     # shellcheck disable=SC2015
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
