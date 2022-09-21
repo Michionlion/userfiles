@@ -23,6 +23,14 @@ function disconnect() {
     netctl list
 }
 
+function cat() {
+    if command -v bat &>/dev/null; then
+        bat "$@"
+    else
+        cat "$@"
+    fi
+}
+
 function trash() {
     for var in "$@"; do
         if [[ "$var" != -* ]]; then

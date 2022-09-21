@@ -1,5 +1,5 @@
 #!/bin/bash
-USERFILES="$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")"
+USERFILES="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 # add bin to path
 export PATH="$PATH:$USERFILES/bin"
