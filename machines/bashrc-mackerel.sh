@@ -40,6 +40,7 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 [[ -s /opt/homebrew/etc/profile.d/autojump.sh ]] && source /opt/homebrew/etc/profile.d/autojump.sh
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+export PATH="/opt/homebrew/opt/gradle@7/bin:$PATH"
 
 # ---- BEGIN niera GENERATED SECTION ----
 export PATH="$PATH:~/.niera/bin"
