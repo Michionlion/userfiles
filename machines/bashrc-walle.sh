@@ -8,8 +8,6 @@
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
 export EDITOR=vim
 
-source "$HOME/.aliases"
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then

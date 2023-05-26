@@ -10,8 +10,6 @@ export EDITOR=vim
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-source "$HOME/.aliases"
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then

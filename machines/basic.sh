@@ -11,8 +11,6 @@ fi
 
 umask 002
 
-source "$HOME/.aliases"
-
 export EDITOR=vim
 
 source $HOME/.userfiles/bashrc
