@@ -23,7 +23,7 @@ fi
 elif [[ "$POWERLINE_VERSION" == "go" ]]; then
   if [[ -f "$(which powerline-go)" ]]; then
     function _update_ps1() {
-      PS1="$(powerline-go -error $? -numeric-exit-codes -shell bash -path-aliases '~/projects=projects,~/resources=resources,~/projects/wsps/vagrantfiles=vagrantfiles' -modules host,venv,cwd,perms,docker,git,jobs,exit -newline)"
+      PS1="$(powerline-go -error $? -numeric-exit-codes -shell bash -path-aliases '~/projects=projects,~/resources=resources,~/projects/wsps/vagrantfiles=vagrantfiles' -modules host,cwd,perms,docker,git,jobs,exit -newline)"
     }
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
   else
