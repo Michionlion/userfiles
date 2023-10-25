@@ -21,6 +21,8 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	glog = log --graph --all
+	url = remote get-url origin
+	paths = remote get-url --all origin
 [fetch]
 	prune = true
 [init]
