@@ -9,6 +9,11 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=true
 export EDITOR=vim
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(rbenv init -)"
+
+export FLUTTER_ROOT="/opt/flutter"
+export PATH="$FLUTTER_ROOT/bin:$PATH"
+export PATH="$HOME/.pub-cache/bin:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -17,9 +22,15 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+if command -v pipx 1>/dev/null 2>&1; then
+  eval "$(register-python-argcomplete pipx)"
+fi
+
 if command -v hub 1>/dev/null 2>&1; then
   eval "$(hub alias -s)"
 fi
+
+export JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk '{print $3}')
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -34,6 +45,10 @@ source $HOME/.vpn/control.sh
 
 # configure Docker
 export COMPOSE_DOCKER_CLI_BUILD=1
+
+# configure keys/tokens
+export TRMC_TOKEN="$(cat $HOME/.trmc-token)"
+export OPENAI_API_KEY="$(cat $HOME/.gpt-token)"
 
 [[ -s /opt/homebrew/etc/profile.d/autojump.sh ]] && source /opt/homebrew/etc/profile.d/autojump.sh
 
