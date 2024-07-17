@@ -56,7 +56,9 @@ function reset-perm() {
 
 function docker () {
     if [[ $1 == "enter" ]]; then
-        command docker exec -it "$2" /bin/bash
+        command docker exec -it "$2" bash
+    elif [[ $1 == "rootenter" ]]; then
+        command docker exec -it -u root "$2" bash
     else
         command docker "$@"
     fi
