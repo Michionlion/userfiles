@@ -50,6 +50,9 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 export TRMC_TOKEN="$(cat $HOME/.trmc-token)"
 export OPENAI_API_KEY="$(cat $HOME/.gpt-token)"
 
+alias trmc-git="git -c http.extraHeader='Authorization: Bearer $TRMC_TOKEN'"
+
+
 [[ -s /opt/homebrew/etc/profile.d/autojump.sh ]] && source /opt/homebrew/etc/profile.d/autojump.sh
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
