@@ -43,9 +43,9 @@ if command -v dircolors 1>/dev/null 2>&1; then
 fi
 
 # color aliases
-alias ll='ls -alF --color=auto'
-alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
+alias ll='ls -ahlF --color=auto'
+alias la='ls -Ah --color=auto'
+alias l='ls -ChF --color=auto'
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
