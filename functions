@@ -59,9 +59,74 @@ function docker () {
         command docker exec -it "$2" bash
     elif [[ $1 == "rootenter" ]]; then
         command docker exec -it -u root "$2" bash
+    elif [[ $1 == "sudo" ]]; then
+        docker-sudo "${@:2}"
     else
         command docker "$@"
     fi
+}
+
+alias dockersudo='docker-sudo'
+alias dsudo='docker-sudo'
+alias ds='docker-sudo'
+function docker-sudo () {
+  local image="ubuntu:latest"
+  local user_override=""
+  # manual parse of short (-h,-i,-u) and long (--help,--image,--user) options
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -h|--help)
+        echo 'Usage: docker-sudo [-i image] [-u uid:gid] [--] [cmd...]
+  -h, --help    Show this help
+  -i, --image   Docker image to use (default: ubuntu:latest)
+  -u, --user    Force this user:group (if omitted, image default applies)
+  cmd...        Command to run (default: bash shell)'
+        return
+        ;;
+      -i|--image)
+        image="$2"; shift 2
+        ;;
+      -u|--user)
+        user_override="--user $2"; shift 2
+        ;;
+      --)
+        shift; break
+        ;;
+      -* )
+        echo "Unknown option: $1" >&2
+        echo "Try 'docker-sudo --help' for help." >&2
+        return 1
+        ;;
+      * )
+        break
+        ;;
+    esac
+  done
+
+  # ensure docker command exists
+  if ! command -v docker >/dev/null 2>&1; then
+    echo "Docker is not installed. Please install Docker first." >&2
+    return 1
+  fi
+
+  # run container with either interactive shell or provided command
+  if [[ $# -eq 0 ]]; then
+    echo "Starting interactive shell..."
+    docker run --rm -it \
+      -v "$PWD":"$PWD" \
+      -w "$PWD" \
+      $user_override \
+      "$image" \
+      bash -l -i
+  else
+    echo "Running command: $*"
+    docker run --rm -it \
+      -v "$PWD":"$PWD" \
+      -w "$PWD" \
+      $user_override \
+      "$image" \
+      bash -l -c "$*"
+  fi
 }
 
 function build() {
