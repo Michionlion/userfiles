@@ -22,10 +22,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-if command -v pipx 1>/dev/null 2>&1; then
-  eval "$(register-python-argcomplete pipx)"
-fi
-
 if command -v hub 1>/dev/null 2>&1; then
   eval "$(hub alias -s)"
 fi
@@ -52,6 +48,9 @@ export OPENAI_API_KEY="$(cat $HOME/.gpt-token)"
 
 alias trmc-git="git -c http.extraHeader='Authorization: Bearer $TRMC_TOKEN'"
 
+if command -v pipx 1>/dev/null 2>&1; then
+  eval "$(register-python-argcomplete pipx)"
+fi
 
 [[ -s /opt/homebrew/etc/profile.d/autojump.sh ]] && source /opt/homebrew/etc/profile.d/autojump.sh
 

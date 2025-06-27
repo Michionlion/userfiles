@@ -23,7 +23,6 @@ alias vmh='vagrant halt'
 alias vmd='vagrant destroy'
 alias vm-status='vagrant global-status --prune'
 
-alias open='xdg-open'
 alias tarc='tar -czvf'
 alias tarx='tar -xzvf'
 alias resource='source ~/.bashrc'
