@@ -1,6 +1,6 @@
 [user]
 	email = saejinmh@va.wagner.com
-	name = Saejin Mahlau-Heinert
+	name = Saejin Kim-Heinert
 [core]
 	excludesfile = ~/.userfiles/global_gitignore
 	autocrlf = input
